@@ -1,0 +1,33 @@
+.myOuterContainer {
+  min-width: 100vw;
+  min-height: calc(100vh - 56px);
+  background-color: #1d2327;
+  overflow-x: hidden;
+}
+
+.my-inner-container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.i-icon {
+  cursor: pointer;
+  color: #007aff;
+  font-size: 24px;
+}
+
+.p-top-8 {
+  padding-top: 8vh;
+}
+
+.t-16 {
+  font-size: 16px;
+  color: #8c8f94;
+}
+
+
+.card-bg-black {
+    background: transparent;
+    border: 0;
+    color: white;
+}

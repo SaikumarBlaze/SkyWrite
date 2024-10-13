@@ -1,0 +1,47 @@
+.custom-tooltip {
+  --bs-tooltip-bg: #4169E1;
+  --bs-tooltip-color: #FFFFFF;
+}
+
+.my-notes-outer-container {
+  min-width: 100vw;
+  min-height: calc(100vh - 56px);
+  background-color: #1d2327;
+  overflow-x: hidden;
+}
+
+.addNoteContainer {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.pt-10 {
+  padding-top: 10vh;
+}
+
+.addNoteBtn {
+  width: fit-content;
+  color: white;
+  background-color: #4169E1;
+  padding: 5px 50px 8px 50px;
+  font-size: larger;
+  border: 0;
+  border-radius: 5px;
+}
+
+.editNoteBtn {
+  background-color: #4169E1;
+  color: white;
+}
+
+.addNoteBtn:hover, .editNoteBtn:hover {
+  background-color: #004dff;
+}
+
+.mt-50 {
+  margin-top: 50px;
+}
+
+.modal-bg-black {
+  background-color: #1d2327;
+}

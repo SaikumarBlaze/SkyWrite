@@ -26,18 +26,19 @@ router.post(
       .withMessage("Password must be at least 6 characters long"),
   ],
   async (req, res) => {
+    let success = false;
     try {
       const result = validationResult(req);
 
       // Check for validation errors and return if any
       if (!result.isEmpty()) {
-        return res.status(400).json({ errors: result.array() });
+        return res.status(400).json({success, errors: result.array() });
       }
 
       // Check if user with the same email already exists
       let user = await User.findOne({ email: req.body.email });
       if (user) {
-        return res.status(400).json({ message: "Email already exists!" });
+        return res.status(400).json({success, message: "Email already exists!" });
       }
 
       // Hash the password using bcrypt
@@ -60,11 +61,12 @@ router.post(
       const authToken = jwt.sign(data, secret);
 
       // Send a success response with the token
+      success = true;
       res
         .status(201)
-        .json({ message: "User created successfully!", authToken });
+        .json({success, message: "User created successfully!", authToken });
     } catch (error) {
-      res.status(400).json({ message: "Internal Server Error!", error });
+      res.status(400).json({success, message: "Internal Server Error!", error });
     }
   }
 );
@@ -79,11 +81,12 @@ router.post(
   ],
   async (req, res) => {
     try {
+      let success = false;
       const result = validationResult(req);
 
       // Check for validation errors and return if any
       if (!result.isEmpty()) {
-        return res.status(400).json({ errors: result.array() });
+        return res.status(400).json({success, errors: result.array() });
       }
 
       const { email, password } = req.body;
@@ -93,7 +96,7 @@ router.post(
       if (!user) {
         return res
           .status(400)
-          .json({ message: "Try to log in again with correct credentials!" });
+          .json({success, message: "Try to log in again with correct credentials!" });
       }
 
       // Compare provided password with the stored hashed password
@@ -101,7 +104,7 @@ router.post(
       if (!checkPassword) {
         return res
           .status(400)
-          .json({ message: "Try signing in again with correct credentials!" });
+          .json({success, message: "Try signing in again with correct credentials!" });
       }
 
       // Create JWT token after successful login
@@ -113,9 +116,10 @@ router.post(
       const authToken = jwt.sign(data, secret);
 
       // Send a success response with the token
-      res.status(201).json({ message: "Logged in successfully!", authToken });
+      success = true;
+      res.status(201).json({success, message: "Logged in successfully!", authToken });
     } catch (error) {
-      res.status(400).json({ message: "Internal Server Error!", error });
+      res.status(400).json({success, message: "Internal Server Error!", error });
     }
   }
 );

@@ -1,5 +1,6 @@
 import connectToDatabase from "./db.js";
 import express from "express"; // imports express module
+import cors from "cors";
 import authRouter from "./routes/auth.js";
 import notesRouter from "./routes/notes.js";
 
@@ -13,6 +14,8 @@ const port = 5000;
 // .use() mounts middleware in an Express app
 // express.json() is a built-in middleware function in Express that parses incoming requests with JSON. It extracts the JSON data from the request body and makes it available in req.body.
 app.use(express.json());
+
+app.use(cors());
 
 // Available Routes
 app.use("/api/auth", authRouter);
