@@ -44,7 +44,12 @@ const About = (props) => {
 
   return (
     <div>
-      <Navbar title="SkyWrite" showAlert={props.showAlert} token={props.token} setToken={props.setToken} />
+      <Navbar
+        title="SkyWrite"
+        showAlert={props.showAlert}
+        token={props.token}
+        setToken={props.setToken}
+      />
       <div className="myOuterContainer p-top-8 pb-4 px-3">
         <div className="my-inner-container text-light text-center">
           <h2 className="mb-4">Powerful Features, Simple to Use</h2>

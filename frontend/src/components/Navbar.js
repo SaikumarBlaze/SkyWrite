@@ -6,9 +6,16 @@ import "../assets/styles/navbar.css";
 const Navbar = (props) => {
   const navigate = useNavigate();
   const handleLogout = () => {
+    // Remove the authentication token from localStorage to log the user out
     localStorage.removeItem("token");
+
+    // Update the token state to false, indicating the user is logged out
     props.setToken(false);
+
+    // Redirect the user to the home page after logging out
     navigate("/");
+
+    // Show a success alert to confirm the logout
     props.showAlert("success", "Successfully logged out!");
   };
 

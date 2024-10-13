@@ -15,13 +15,19 @@ const Notes = (props) => {
   });
   const { notes, getAllNotes, editNote } = context;
   const ref = useRef(null);
+
+  // useEffect hook to load notes when the component is first mounted
   useEffect(() => {
-    if (localStorage.getItem("token")) getAllNotes();
-    // eslint-disable-next-line
+    // Check if there's a token in localStorage to determine if the user is logged in
+    if (localStorage.getItem("token")) {
+      getAllNotes(); // Fetch all notes if the user is authenticated
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Function to populate the note state with current note details for editing
   const updateNote = (currentNote) => {
-    ref.current.click();
+    ref.current.click(); // Trigger the edit modal or form display
     setNote({
       eid: currentNote._id,
       etitle: currentNote.title,
@@ -30,15 +36,19 @@ const Notes = (props) => {
     });
   };
 
+  // Handle input changes dynamically by updating the note state
   const handleOnChange = (event) => {
-    setNote({ ...note, [event.target.name]: event.target.value });
+    setNote({ ...note, [event.target.name]: event.target.value }); // Update state based on the name of the input field
   };
 
+  // Handle the update note form submission
   const handleUpdateNote = (event) => {
+    event.preventDefault(); // Prevent form from reloading the page
+
     // Frontend validation to match backend rules
     if (note.etitle.trim().length < 3) {
       props.showAlert("danger", "Title must be at least 3 characters long.");
-      return;
+      return; // Exit the function if validation fails
     }
 
     if (note.edescription.trim().length < 5) {
@@ -46,10 +56,13 @@ const Notes = (props) => {
         "danger",
         "Description must be at least 5 characters long."
       );
-      return;
+      return; // Exit the function if validation fails
     }
 
+    // Call the editNote function to update the note in the backend
     editNote(note.eid, note.etitle, note.edescription, note.etag);
+
+    // Show a success alert once the note is updated
     props.showAlert("success", "Edited Note Successfully!");
   };
 

@@ -12,26 +12,38 @@ const AddNote = (props) => {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Prevent the form from refreshing the page
 
-    // Frontend validation to match backend rules
+    // Frontend validation: Ensure title is at least 3 characters long
     if (note.title.trim().length < 3) {
+      // Show an alert if the title is too short
       props.showAlert("danger", "Title must be at least 3 characters long.");
+
+      // Reset the title input and exit the function early
       setNote({ ...note, title: "" });
       return;
     }
 
+    // Frontend validation: Ensure description is at least 5 characters long
     if (note.description.trim().length < 5) {
+      // Show an alert if the description is too short
       props.showAlert(
         "danger",
         "Description must be at least 5 characters long."
       );
+
+      // Reset the description input and exit the function early
       setNote({ ...note, description: "" });
       return;
     }
 
+    // Add the new note using the provided title, description, and tag
     addNote(note.title, note.description, note.tag);
+
+    // Show success message on successful note addition
     props.showAlert("success", "Added Note Successfully!");
+
+    // Reset the note fields to empty for the next input
     setNote({ title: "", description: "", tag: "" });
   };
 

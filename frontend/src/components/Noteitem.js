@@ -32,17 +32,17 @@ const Noteitem = (props) => {
           <div>
             <i
               className="fa-regular fa-pen-to-square me-2"
-              data-bs-toggle="tooltip" 
+              data-bs-toggle="tooltip"
               data-bs-custom-class="custom-tooltip"
-              data-bs-placement="top" 
+              data-bs-placement="top"
               data-bs-title="Edit Note"
               onClick={handleEditNote}
             ></i>
             <i
               className="fa-regular fa-trash-can ms-2"
-              data-bs-toggle="tooltip" 
+              data-bs-toggle="tooltip"
               data-bs-custom-class="custom-tooltip"
-              data-bs-placement="top" 
+              data-bs-placement="top"
               data-bs-title="Delete Note"
               onClick={handleDeleteNote}
             ></i>
