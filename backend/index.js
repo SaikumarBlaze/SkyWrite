@@ -8,7 +8,7 @@ import notesRouter from "./routes/notes.js";
 connectToDatabase();
 
 const app = express(); // Create an instance of express server
-const port = 5000;
+const port = process.env.PORT || 3000;
 
 // Middleware functions are functions that run during the request-response cycle of an Express app and are used to modify the req and res objects, end the request-response cycle, or call the next middleware in the stack.
 // .use() mounts middleware in an Express app

@@ -3,7 +3,7 @@ import NoteContext from "./noteContext";
 
 const NoteState = (props) => {
   // Backend API host URL
-  const host = process.env.REACT_APP_API_URL || "http://localhost:5000"; 
+  const host = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
   // Initial state for notes, starting with an empty array
   const initialNotes = [];
