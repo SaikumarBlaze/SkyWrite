@@ -5,40 +5,40 @@ import "../assets/styles/about.css";
 const About = (props) => {
   const articles = [
     {
-      icon: "fa-solid fa-sync-alt",
-      title: "Access Anywhere",
+      icon: "fa-solid fa-lightbulb",
+      title: "Capture Ideas Instantly",
       description:
-        'Your notes are synced across all your devices—whether it\'s your phone, tablet, or computer. No need to press a "sync" button — everything updates in real time.',
+        "Keep your thoughts and ideas in one place. With SkyWrite, jot down notes quickly and organize them effortlessly for easy access.",
     },
     {
-      icon: "fa-solid fa-tags",
-      title: "Organize Your Ideas",
+      icon: "fa-solid fa-folder-open",
+      title: "Effortless Organization",
       description:
-        "Effortlessly manage your notes with tags and folders. Instantly find what you need with SkyWrite’s powerful search capabilities.",
+        "Easily sort and categorize your notes with folders and tags. Find exactly what you need with powerful search options tailored for productivity.",
     },
     {
-      icon: "fa-solid fa-users",
-      title: "Easily Share Ideas",
+      icon: "fa-solid fa-edit",
+      title: "Simple & Clean Interface",
       description:
-        "Share your notes, tasks, or ideas with others. Work together seamlessly by collaborating on shared notes or lists.",
+        "Stay focused on your ideas with a distraction-free, intuitive design. SkyWrite's minimal interface makes note-taking easy and enjoyable.",
     },
     {
-      icon: "fa-solid fa-history",
-      title: "Stay Updated",
+      icon: "fa-solid fa-lock",
+      title: "Secure & Private",
       description:
-        "Every update you make is saved, so you can always go back and see previous versions of your notes. Never lose important details.",
+        "Your notes are safe with us. SkyWrite ensures that your ideas remain private and accessible only to you.",
     },
     {
-      icon: "fa-solid fa-file-code",
-      title: "Write Your Way",
+      icon: "fa-solid fa-cloud-upload-alt",
+      title: "Easy Access Anytime",
       description:
-        "Whether you prefer plain text or formatting with Markdown, SkyWrite has you covered. Preview and publish your notes in your favorite format.",
+        "Log in from any device to view your notes. SkyWrite keeps your content accessible, wherever you go.",
     },
     {
-      icon: "fa-solid fa-gift",
-      title: "Free for You",
+      icon: "fa-solid fa-gem",
+      title: "Completely Free",
       description:
-        "Enjoy unlimited notes, seamless syncing, collaboration, and more—completely free of charge. SkyWrite makes it easy to stay organized without the cost.",
+        "SkyWrite is designed to make note-taking simple and accessible, with no limits on usage and no hidden costs—enjoy complete freedom to organize.",
     },
   ];
 
@@ -52,7 +52,7 @@ const About = (props) => {
       />
       <div className="myOuterContainer p-top-8 pb-4 px-3">
         <div className="my-inner-container text-light text-center">
-          <h2 className="mb-4">Powerful Features, Simple to Use</h2>
+          <h2 className="mb-4 l-2">Powerful Features, Simple to Use</h2>
           <div className="row">
             {articles.map((article, index) => {
               return (
@@ -62,8 +62,8 @@ const About = (props) => {
                 >
                   <i className={`${article.icon} i-icon`}></i>
                   <div className="card-body">
-                    <h5 className="card-title">{article.title}</h5>
-                    <p className="card-text t-16">{article.description}</p>
+                    <h5 className="card-title l-1">{article.title}</h5>
+                    <p className="card-text t-16 l-1">{article.description}</p>
                   </div>
                 </div>
               );

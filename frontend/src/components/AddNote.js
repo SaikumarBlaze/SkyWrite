@@ -1,7 +1,10 @@
 import React, { useState, useContext } from "react";
 import noteContext from "../context/notes/noteContext";
+import { useNavigate } from "react-router-dom";
+import "../assets/styles/addnote.css";
 
 const AddNote = (props) => {
+  const navigate = useNavigate();
   const context = useContext(noteContext);
   const { addNote } = context;
 
@@ -45,49 +48,62 @@ const AddNote = (props) => {
 
     // Reset the note fields to empty for the next input
     setNote({ title: "", description: "", tag: "" });
+
+    navigate("/notes");
   };
 
   return (
-    <div className="addNoteContainer text-center text-light">
-      <h2 className="text-center">Add a Note</h2>
-      <form>
-        <div className="my-4">
-          <input
-            type="text"
-            className="form-control"
-            id="title"
-            name="title"
-            onChange={handleOnChange}
-            placeholder="Title"
-            value={note.title}
-          />
-        </div>
-        <div className="mb-4">
-          <textarea
-            className="form-control"
-            id="exampleFormControlTextarea1"
-            name="description"
-            placeholder="Description: Enter your text here...."
-            value={note.description}
-            onChange={handleOnChange}
-            rows="4"
-          ></textarea>
-        </div>
-        <div className="mb-4">
-          <input
-            type="text"
-            className="form-control"
-            id="tag"
-            name="tag"
-            onChange={handleOnChange}
-            placeholder="Tag"
-            value={note.tag}
-          />
-        </div>
-        <button type="submit" className="addNoteBtn" onClick={handleSubmit}>
-          Create Note
-        </button>
-      </form>
+    <div className="add-note-container">
+      <div className="add-note-inner-container text-light">
+        <span
+          className="left-arrow"
+          onClick={() => {
+            navigate("/notes");
+          }}
+        >
+          &#8592;
+        </span>
+        <form>
+          <div className="my-4">
+            <input
+              type="text"
+              className="form-control"
+              id="title"
+              name="title"
+              onChange={handleOnChange}
+              placeholder="Title"
+              value={note.title}
+            />
+          </div>
+          <div className="mb-4">
+            <textarea
+              className="form-control"
+              id="exampleFormControlTextarea2"
+              name="description"
+              placeholder="Note"
+              value={note.description}
+              onChange={handleOnChange}
+              rows="13"
+            ></textarea>
+          </div>
+          <div className="mb-4">
+            <input
+              type="text"
+              className="form-control"
+              id="tag"
+              name="tag"
+              onChange={handleOnChange}
+              placeholder="Tag"
+              value={note.tag}
+            />
+          </div>
+          <div className="add-note-box">
+            <button type="submit" className="addNoteBtn" onClick={handleSubmit}>
+              Create Note
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

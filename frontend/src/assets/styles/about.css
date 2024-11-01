@@ -1,6 +1,6 @@
 .myOuterContainer {
   min-width: 100vw;
-  min-height: calc(100vh - 56px);
+  min-height: calc(100vh - 65.6px);
   background-color: #1d2327;
   overflow-x: hidden;
 }
@@ -11,7 +11,7 @@
 }
 
 .i-icon {
-  cursor: pointer;
+  cursor: default;
   color: #007aff;
   font-size: 24px;
 }

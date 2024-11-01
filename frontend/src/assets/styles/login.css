@@ -1,69 +1,166 @@
 .outer-container {
-    min-width: 100vw;
-    min-height: 100vh;
-    background-color: #1d2327;
-    overflow-x: hidden;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: #1d2327;
+  overflow-x: hidden;
 }
 
 .myContainer {
-    max-width: 400px;
-    margin: auto;
+  max-width: 400px;
+  margin: auto;
+}
+
+.verify-container {
+  width: 500px;
+  background-color: #1e3138;
+  border: 1px solid rgba(127, 127, 127, 0.5);
+  border-radius: 5px;
+}
+
+.heading {
+  font-size: 28px;
+  line-height: 28px;
+  padding: 20px;
+  margin: 0;
+  border-bottom: 1px solid rgba(127, 127, 127, 0.5);
+}
+
+.desc {
+  font: 18px;
+  line-height: 24px;
+  padding: 15px 20px;
+  margin: 0;
+}
+
+.email-field {
+  padding: 5px 18px 24px 18px;
+  border-bottom: 1px solid rgba(127, 127, 127, 0.5);
+}
+
+.bt {
+  border-top: 1px solid rgba(127, 127, 127, 0.5);
+}
+
+.field {
+  padding: 0px 20px;
+}
+
+.faded-text {
+  color: #f6f6f675;
+}
+
+.f-24 {
+  font-size: 24px;
+  border: 2px solid white;
+  padding: 12px;
+  border-radius: 50%;
+}
+
+.verify-btns {
+  padding: 20px;
+}
+
+.cancel-btn,
+.search-btn {
+  font-size: 18px;
+  border-radius: 5px;
+  padding: 5px 20px;
+  border: 0;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #c9c9c93d;
+}
+
+.cancel-btn:hover {
+  background-color: #6e6d6d3d;
+}
+
+.search-btn {
+  background-color: #075673;
+}
+
+.p-10 {
+  padding-top: 10vh;
+}
+
+.search-btn:hover {
+  background-color: #104052;
+}
+
+.font-18 {
+  font-size: 18px;
 }
 
 .logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .pt-15 {
-    padding-top: 15vh;
+  padding-top: 15vh;
 }
 
 .mb-20 {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .myBtn {
-    width: 100%;
-    color: white;
-    background-color: #4169E1;
-    padding: 3px 0px 6px 0px;
-    font-size: larger;
-    border: 0;
-    border-radius: 5px;
+  width: 100%;
+  color: white;
+  background-color: #075673;
+  padding: 3px 0px 6px 0px;
+  font-size: larger;
+  border: 0;
+  border-radius: 5px;
+  transition: all 0.25s ease;
 }
 
 .myBtn:hover {
-    background-color: #004dff;
+  background-color: #104052;
 }
 
 .text {
-    color: grey;
-    font-size: 16px;
-    line-height: 16px;
-    position: relative;
-    bottom: 2px;
+  color: grey;
+  font-size: 16px;
+  line-height: 16px;
+  position: relative;
+  bottom: 2px;
 }
 
 .divider {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .line {
-    width: 45%;
-    height: 1px;
-    background-color: #bcb9b9;
+  width: 45%;
+  height: 1px;
+  background-color: #bcb9b9;
 }
 
 .myLink {
-    color: #4169E1;
-    font-weight: 400;
-    cursor: pointer;
+  color: #4169e1;
+  font-weight: 400;
+  cursor: pointer;
 }
 
 .myLink:hover {
-    color: #004dff;
+  color: #004dff;
+  text-decoration: underline;
+}
+
+@media (max-width: 550px) {
+  .verify-container {
+    width: 100%;
+  }
+
+  .heading {
+    text-align: center;
+    font-size: 22px;
+    line-height: 22px;
+  }
 }

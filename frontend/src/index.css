@@ -8,6 +8,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body::-webkit-scrollbar, #exampleFormControlTextarea1::-webkit-scrollbar {
+body::-webkit-scrollbar, #description::-webkit-scrollbar, #edescription::-webkit-scrollbar {
   display: none;
 }

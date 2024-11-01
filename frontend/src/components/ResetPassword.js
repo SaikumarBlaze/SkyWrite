@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../assets/styles/login.css";
 
-const Signup = (props) => {
+const ResetPassword = (props) => {
   const host = process.env.REACT_APP_API_URL || "http://localhost:5000";
   const [credentials, setCredentials] = useState({
-    name: "",
-    email: "",
     password: "",
     cpassword: "",
   });
   const navigate = useNavigate();
+  const location = useLocation();
+  const email = location.state?.email || ""; // Retrieve email from location state
 
   const validatePassword = (password) => {
     return (
@@ -54,14 +54,13 @@ const Signup = (props) => {
 
     try {
       // Send a POST request to create a new user account
-      const response = await fetch(`${host}/api/auth/createuser`, {
+      const response = await fetch(`${host}/api/auth/account/reset-password`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json", // Specify the content type for the request body
         },
         body: JSON.stringify({
-          name: credentials.name,
-          email: credentials.email,
+          email,
           password: credentials.password,
         }),
       });
@@ -72,72 +71,37 @@ const Signup = (props) => {
       if (parsedData.success) {
         localStorage.setItem("token", parsedData.authToken); // Store the authentication token in localStorage
         props.setToken(true); // Update the token state to true (user is logged in)
-        localStorage.setItem("userName", credentials.name); // Store the user's name in local storage
-        localStorage.setItem("userEmail", credentials.email); // Store the user's email in local storage
-        props.showAlert("success", "Account created successfully!"); // Show a success message
+        props.showAlert("success", "Changed password successfully!"); // Show a success message
         navigate("/"); // Redirect to the home page
       } else {
-        // Handle different error messages from the backend
-        if (parsedData.message === "Email already exists!") {
-          props.showAlert("danger", "Account already exists!"); // Show an alert if the email is already registered
-        } else {
-          props.showAlert("danger", "Internal server error!"); // Generic error message for server issues
-        }
+        props.showAlert("danger", "Internal server error!"); // Generic error message for server issues
 
         // Reset the form fields after an unsuccessful attempt
         setCredentials({
-          name: "",
-          email: "",
           password: "",
           cpassword: "",
         });
       }
     } catch (error) {
       // Catch and handle any network or unexpected errors
-      console.error("Registration failed:", error.message);
+      console.error("Password reset failed:", error.message);
       props.showAlert("danger", "An error occurred. Please try again later.");
     }
   };
 
   return (
-    <div className="outer-container pt-10 pb-4 px-4">
-      <div className="myContainer text-center l-1">
-        <div className="logo">
-          <i className="fa-solid fa-file-lines notes-icon"></i>
-          <h2 className="mb-20 text-light l-2">Sign up</h2>
+    <div className="outer-container p-3 d-flex flex-column justify-content-center align-items-center">
+      <div className="verify-container text-light l-1">
+        <h2 className="heading">Reset Your Password</h2>
+        <div className="profile-details d-flex flex-column align-items-center pt-4">
+          <span className="pb-2">
+            <i className="fa-solid fa-user f-24"></i>
+          </span>
+          <span>{email}</span>
+          <span className="faded-text">Skywrite User</span>
         </div>
-
         <form onSubmit={handleSubmit}>
-          <div className="my-4">
-            <input
-              type="text"
-              className="form-control"
-              id="name"
-              name="name"
-              aria-describedby="emailHelp"
-              onChange={handleOnChange}
-              placeholder="Name"
-              value={credentials.name}
-              minLength={3}
-              autoComplete="name"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              name="email"
-              aria-describedby="emailHelp"
-              onChange={handleOnChange}
-              placeholder="Email"
-              value={credentials.email}
-              autoComplete="email"
-              required
-            />
-          </div>
-          <div className="mb-4">
+          <div className="my-4 field">
             <input
               type="password"
               className="form-control"
@@ -150,7 +114,7 @@ const Signup = (props) => {
               required
             />
           </div>
-          <div className="mb-4">
+          <div className="my-4 field">
             <input
               type="password"
               className="form-control"
@@ -163,44 +127,15 @@ const Signup = (props) => {
               required
             />
           </div>
-          <button type="submit" className="myBtn mb-4">
-            Sign up
-          </button>
-          <div className="divider mb-3">
-            <span className="line"></span>
-            <span className="text">or</span>
-            <span className="line"></span>
-          </div>
-          <div
-            className="text mb-3"
-            onClick={() => {
-              navigate("/login");
-            }}
-          >
-            Already have an account? <span className="myLink">Log in</span>
-          </div>
-          <div
-            className="text"
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            Back to homepage? <span className="myLink">Home</span>
+          <div className="verify-btns d-flex justify-content-end bt">
+            <button type="submit" className="search-btn">
+              Reset Password
+            </button>
           </div>
         </form>
       </div>
     </div>
-
-    // <div className="container">
-    //   <form onSubmit={handleSubmit}>
-    //     </div>
-
-    //     <button type="submit" className="btn btn-success">
-    //       Signup
-    //     </button>
-    //   </form>
-    // </div>
   );
 };
 
-export default Signup;
+export default ResetPassword;

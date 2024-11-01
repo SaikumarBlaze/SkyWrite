@@ -10,7 +10,7 @@ const Alert = (props) => {
     <div>
       {props.alert && (
         <div
-          className={`alert alert-${props.alert.type} alert-dismissible fade show fixed-top`}
+          className={`alert alert-${props.alert.type} alert-dismissible fade show fixed-top l-1 text-center`}
           role="alert"
         >
           <strong>{capitalize(props.alert.type)}: </strong>{" "}

@@ -7,12 +7,11 @@ import image from "../assets/images/design.png";
 function Home(props) {
   const navigate = useNavigate();
   const sentences = [
-    "SkyWrite is your go-to note-taking platform that combines simplicity with real-time updates, ensuring your thoughts are captured and organized instantly, without the hassle.",
-    "Manage all your tasks alongside your notes, with SkyWrite keeping everything in sync across all your devices, so you stay on top of what matters — wherever you are.",
-    "Easily share files and notes within SkyWrite, bringing all your important resources into one place for seamless access and collaboration.",
-    "After switching to SkyWrite, I no longer worry about losing important notes or tasks. With real-time cloud syncing, everything is always safe and available on any device.",
-    "SkyWrite is more than a note-taking app — it's an organizational hub that allows you to categorize, tag, and structure your notes in a way that works for you, all while staying synced across devices.",
-    "Whether you're managing projects, collaborating with others, or organizing your life, SkyWrite offers unlimited possibilities to stay productive and organized, wherever you are.",
+    "Organize your ideas effortlessly with SkyWrite, your go-to platform for managing notes, tasks, and projects all in one place.",
+    "Keep all your notes secure and accessible. SkyWrite makes it easy to capture, organize, and find everything you need in one seamless experience.",
+    "Streamline your workflow with SkyWrite—where capturing ideas, managing tasks, and organizing projects is as simple as it gets.",
+    "From quick notes to detailed lists, SkyWrite helps you stay organized and focused with a clean, user-friendly interface.",
+    "Elevate your productivity with SkyWrite. Capture every idea, track your tasks, and stay organized effortlessly, all in one place.",
   ];
 
   const [index, setIndex] = useState(0);
@@ -36,16 +35,16 @@ function Home(props) {
       <div className="my-outer-container pt-18 pb-4 px-4">
         <div className="myInnerContainer-1">
           <div className="d-flex flex-column align-items-center text-light text-center">
-            <h1 className="mb-5">
+            <h1 className="mb-5 l-2">
               SkyWrite - Your All-in-One Note-Taking Solution
             </h1>
-            <p className="text-18 mb-5">
-              All your notes, synced on all your devices. Get Simplenote now for
-              iOS, Android, Mac, Windows, Linux, or in your browser.
+            <p className="text-18 mb-5 l-1">
+              Unleash your thoughts, organize your world — SkyWrite brings clarity
+              to your ideas.
             </p>
             <button
               type="button"
-              className="myHomeBtn mb-5"
+              className="myHomeBtn mb-5 l-1"
               onClick={() => {
                 !localStorage.getItem("token")
                   ? navigate("/signup")
@@ -64,7 +63,7 @@ function Home(props) {
           </div>
         </div>
         <div className="myInnerContainer-3">
-          <p className="changing text-28 text-center text-light pt-4">
+          <p className="changing text-28 text-center text-light pt-4 l-1">
             {sentences[index]}
           </p>
         </div>

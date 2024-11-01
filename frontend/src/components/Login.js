@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/images/logo.png";
 import "../assets/styles/login.css";
 
 const Login = (props) => {
@@ -39,6 +38,10 @@ const Login = (props) => {
         // Update the state to indicate the user is logged in
         props.setToken(true);
 
+        localStorage.setItem("userName", parsedData.name); // Store the user's name in local storage
+
+        localStorage.setItem("userEmail", credentials.email); // Store the user's email in local storage
+
         // Show success alert and navigate to the home page
         props.showAlert("success", "Successfully logged in!");
         navigate("/");
@@ -61,16 +64,10 @@ const Login = (props) => {
 
   return (
     <div className="outer-container pt-15 pb-4 px-4">
-      <div className="myContainer text-center">
+      <div className="myContainer text-center l-1">
         <div className="logo">
-          <img
-            className="mb-20"
-            src={logo}
-            alt="Error"
-            width={50}
-            height={50}
-          />
-          <h2 className="mb-20 text-light">Sign in</h2>
+          <i className="fa-solid fa-file-lines notes-icon"></i>
+          <h2 className="mb-20 text-light l-2">Sign in</h2>
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -84,6 +81,7 @@ const Login = (props) => {
               onChange={handleOnChange}
               placeholder="Email"
               value={credentials.email}
+              autoComplete="email"
               required
             />
           </div>
@@ -109,6 +107,14 @@ const Login = (props) => {
             <span className="line"></span>
           </div>
           <div
+            className="text mb-3 myLink"
+            onClick={() => {
+              navigate("/account/verify-email");
+            }}
+          >
+            Forgotten Password?
+          </div>
+          <div
             className="text mb-3"
             onClick={() => {
               navigate("/signup");
@@ -122,7 +128,7 @@ const Login = (props) => {
               navigate("/");
             }}
           >
-            Want to go back? <span className="myLink">Home</span>
+            Back to homepage? <span className="myLink">Home</span>
           </div>
         </form>
       </div>

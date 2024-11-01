@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import noteContext from "../context/notes/noteContext";
 import Noteitem from "./Noteitem";
-import AddNote from "./AddNote";
 import Navbar from "./Navbar";
 import "../assets/styles/notes.css";
+import plusIcon from "../assets/images/plus-icon.webp";
+import { useNavigate } from "react-router-dom";
 
 const Notes = (props) => {
+  const navigate = useNavigate();
   const context = useContext(noteContext);
   const [note, setNote] = useState({
     eid: "",
@@ -16,7 +18,6 @@ const Notes = (props) => {
   const { notes, getAllNotes, editNote } = context;
   const ref = useRef(null);
 
-  // useEffect hook to load notes when the component is first mounted
   useEffect(() => {
     // Check if there's a token in localStorage to determine if the user is logged in
     if (localStorage.getItem("token")) {
@@ -126,7 +127,7 @@ const Notes = (props) => {
                   </label>
                   <textarea
                     className="form-control"
-                    id="exampleFormControlTextarea1"
+                    id="edescription"
                     name="edescription"
                     placeholder="Description: Enter your text here...."
                     value={note.edescription}
@@ -170,13 +171,17 @@ const Notes = (props) => {
         </div>
       </div>
 
-      <div className="my-notes-outer-container pt-10 pb-4 px-3">
-        <AddNote showAlert={props.showAlert} />
-
-        <div className="container mt-50 text-light">
-          <h2 className="text-center">Your Notes</h2>
-          {notes.length === 0 && <div>No Notes to Display!</div>}
-          <div className="row">
+      <div className="my-notes-outer-container p-3">
+        <div className="my-notes-inner-container text-light">
+          {notes.length === 0 && (
+            <div className="no-notes d-flex flex-column justify-content-center align-items-center">
+              <i className="fa-solid fa-file-lines notes-icon"></i>
+              <span className="no-notes-text l-2 mb-2">
+                Notes you add appear here
+              </span>
+            </div>
+          )}
+          <div className="row mb-90">
             {notes.map((note, index) => {
               return (
                 <div className="col-md-4" key={index}>
@@ -189,6 +194,20 @@ const Notes = (props) => {
               );
             })}
           </div>
+          <footer className="create-note">
+            <img
+              className="plus-icon"
+              src={plusIcon}
+              alt="Add Note"
+              onClick={() => {
+                navigate("/notes/addnote");
+              }}
+            />
+          </footer>
+        </div>
+        <div className="bottom">
+          <div className="empty-box"></div>
+          <span className="bottom-text l-2 text-secondary">Click the plus icon to create a note</span>
         </div>
       </div>
     </>

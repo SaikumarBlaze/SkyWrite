@@ -8,6 +8,10 @@ import Alert from "./components/Alert";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Notes from "./components/Notes";
+import VerifyEmail from "./components/VerifyEmail";
+import ResetPassword from "./components/ResetPassword";
+import ManageAccount from "./components/ManageAccount";
+import AddNote from "./components/AddNote";
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -19,7 +23,7 @@ function App() {
 
     setTimeout(() => {
       setAlert(null);
-    }, 1500);
+    }, 2000);
   };
 
   return (
@@ -38,12 +42,29 @@ function App() {
             <Route
               exact
               path="/about"
-              element={<About showAlert={showAlert} token={token} setToken={setToken} />}
+              element={
+                <About
+                  showAlert={showAlert}
+                  token={token}
+                  setToken={setToken}
+                />
+              }
             />
             <Route
               exact
               path="/notes"
-              element={<Notes showAlert={showAlert} token={token} setToken={setToken} />}
+              element={
+                <Notes
+                  showAlert={showAlert}
+                  token={token}
+                  setToken={setToken}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/notes/addnote"
+              element={<AddNote showAlert={showAlert} />}
             />
             <Route
               exact
@@ -58,9 +79,36 @@ function App() {
             />
             <Route
               exact
+              path="/account/verify-email"
+              element={<VerifyEmail showAlert={showAlert} />}
+            />
+            <Route
+              exact
+              path="/account/reset-password"
+              element={
+                <ResetPassword
+                  showAlert={showAlert}
+                  token={token}
+                  setToken={setToken}
+                />
+              }
+            />
+            <Route
+              exact
               path="/signup"
               element={
                 <Signup
+                  showAlert={showAlert}
+                  token={token}
+                  setToken={setToken}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/account/manage"
+              element={
+                <ManageAccount
                   showAlert={showAlert}
                   token={token}
                   setToken={setToken}
