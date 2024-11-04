@@ -3,8 +3,7 @@ import dotenv from "dotenv";
 
 // Load environment variables from .env.local or .env
 dotenv.config();
-// const mongoURI = process.env.MONGO_URI;
-const mongoURI = "mongodb://localhost:27017/SkyWriteDB";
+const mongoURI = process.env.MONGO_URI;
 
 async function connectToDatabase() {
   try {
