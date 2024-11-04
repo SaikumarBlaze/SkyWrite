@@ -15,7 +15,23 @@ const port = process.env.PORT || 10000;
 // express.json() is a built-in middleware function in Express that parses incoming requests with JSON. It extracts the JSON data from the request body and makes it available in req.body.
 app.use(express.json());
 
-app.use(cors());
+const allowedOrigins = [
+  "https://sky-write-notes-saikumar.vercel.app",
+  "http://localhost:3000",
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 
 // Available Routes
 app.use("/api/auth", authRouter);
