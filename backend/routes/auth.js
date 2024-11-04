@@ -332,4 +332,15 @@ router.delete("/deleteuser/:id", async (req, res) => {
   }
 });
 
+router.get("/ping", async (req, res) => {
+  try {
+    res.status(200).json({
+      message:
+        "Keeping the server awake by preventing it from going inactive using UptimeRobot!",
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error!", error });
+  }
+});
+
 export default router;

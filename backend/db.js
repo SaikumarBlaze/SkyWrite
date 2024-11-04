@@ -3,7 +3,8 @@ import dotenv from "dotenv";
 
 // Load environment variables from .env.local or .env
 dotenv.config();
-const mongoURI = process.env.MONGO_URI; // URI used to connect to the MongoDB database.
+// const mongoURI = process.env.MONGO_URI;
+const mongoURI = "mongodb://localhost:27017/SkyWriteDB";
 
 async function connectToDatabase() {
   try {
@@ -11,6 +12,7 @@ async function connectToDatabase() {
     console.log("Connected to MongoDB Successfully!");
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
+    process.exit(1); // Exit the process if the connection fails
   }
 }
 

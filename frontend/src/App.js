@@ -12,6 +12,7 @@ import VerifyEmail from "./components/VerifyEmail";
 import ResetPassword from "./components/ResetPassword";
 import ManageAccount from "./components/ManageAccount";
 import AddNote from "./components/AddNote";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -54,17 +55,23 @@ function App() {
               exact
               path="/notes"
               element={
-                <Notes
-                  showAlert={showAlert}
-                  token={token}
-                  setToken={setToken}
-                />
+                <ProtectedRoute>
+                  <Notes
+                    showAlert={showAlert}
+                    token={token}
+                    setToken={setToken}
+                  />
+                </ProtectedRoute>
               }
             />
             <Route
               exact
               path="/notes/addnote"
-              element={<AddNote showAlert={showAlert} />}
+              element={
+                <ProtectedRoute>
+                  <AddNote showAlert={showAlert} />
+                </ProtectedRoute>
+              }
             />
             <Route
               exact
@@ -108,11 +115,13 @@ function App() {
               exact
               path="/account/manage"
               element={
-                <ManageAccount
-                  showAlert={showAlert}
-                  token={token}
-                  setToken={setToken}
-                />
+                <ProtectedRoute>
+                  <ManageAccount
+                    showAlert={showAlert}
+                    token={token}
+                    setToken={setToken}
+                  />
+                </ProtectedRoute>
               }
             />
           </Routes>

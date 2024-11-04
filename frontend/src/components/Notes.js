@@ -207,7 +207,9 @@ const Notes = (props) => {
         </div>
         <div className="bottom">
           <div className="empty-box"></div>
-          <span className="bottom-text l-2 text-secondary">Click the plus icon to create a note</span>
+          <span className="bottom-text l-2 text-secondary">
+            Click the plus icon to create a note
+          </span>
         </div>
       </div>
     </>

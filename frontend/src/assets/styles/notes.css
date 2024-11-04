@@ -15,6 +15,17 @@
   margin: auto;
 }
 
+.notes-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 10px; 
+  grid-auto-flow: dense; 
+}
+
+.note-item {
+  min-height: 100px;
+}
+
 .pt-10 {
   padding-top: 10vh;
 }
