@@ -90,8 +90,8 @@ router.post(
     body("password").exists().withMessage("Password cannot be empty"),
   ],
   async (req, res) => {
+    let success = false;
     try {
-      let success = false;
       const result = validationResult(req);
 
       // Check for validation errors and return if any
@@ -145,6 +145,7 @@ router.post(
 
 // Route 3: Get logged in User details using GET "/api/auth/getuser" - Login required
 router.get("/getuser", fetchUser, async (req, res) => {
+  let success = false;
   try {
     // Retrieve user ID from the JWT (set by fetchUser middleware)
     const userId = req.user.id;
@@ -153,9 +154,9 @@ router.get("/getuser", fetchUser, async (req, res) => {
     const user = await User.findById(userId).select("-password");
 
     // Send the user details as a response
-    res.status(201).json({ user });
+    res.status(201).json({ success, user });
   } catch (error) {
-    res.status(400).json({ message: "Internal Server Error!", error });
+    res.status(400).json({ success, message: "Internal Server Error!", error });
   }
 });
 
@@ -164,8 +165,8 @@ router.post(
   "/account/verify-email",
   [body("email").isEmail().withMessage("Invalid email address")],
   async (req, res) => {
+    let success = false;
     try {
-      let success = false;
       const result = validationResult(req);
 
       // Check for validation errors and return if any
@@ -214,8 +215,8 @@ router.post(
       .withMessage("Password must contain a special character"),
   ],
   async (req, res) => {
+    let success = false;
     try {
-      let success = false;
       const result = validationResult(req);
 
       // Check for validation errors and return if any
@@ -328,7 +329,7 @@ router.delete("/deleteuser/:id", async (req, res) => {
       .status(201)
       .json({ success, message: "Account deleted successfully!", deletedUser });
   } catch (error) {
-    res.status(400).json({ message: "Internal Server Error!", error });
+    res.status(400).json({ success, message: "Internal Server Error!", error });
   }
 });
 
