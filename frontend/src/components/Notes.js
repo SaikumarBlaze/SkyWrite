@@ -181,10 +181,10 @@ const Notes = (props) => {
               </span>
             </div>
           )}
-          <div className="row mb-90">
+          <div className="notes-container mb-90">
             {notes.map((note, index) => {
               return (
-                <div className="col-md-4" key={index}>
+                <div className="note-item" key={index}>
                   <Noteitem
                     note={note}
                     updateNote={updateNote}

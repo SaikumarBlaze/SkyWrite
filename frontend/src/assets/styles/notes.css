@@ -16,14 +16,14 @@
 }
 
 .notes-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 10px; 
-  grid-auto-flow: dense; 
+  column-count: 3;
+  column-gap: 15px;
 }
 
 .note-item {
-  min-height: 100px;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 15px;
 }
 
 .pt-10 {
@@ -124,4 +124,16 @@
 
 .modal-bg-black {
   background-color: #1e3138;
+}
+
+@media (max-width: 800px) {
+  .notes-container {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .notes-container {
+    column-count: 1;
+  }
 }

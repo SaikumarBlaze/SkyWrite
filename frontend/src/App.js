@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
 import NoteState from "./context/notes/NoteState";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Alert from "./components/Alert";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
@@ -13,6 +13,7 @@ import ResetPassword from "./components/ResetPassword";
 import ManageAccount from "./components/ManageAccount";
 import AddNote from "./components/AddNote";
 import ProtectedRoute from "./components/ProtectedRoute";
+import keepBackendAlive from "./utils/keepAlive";
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -26,6 +27,14 @@ function App() {
       setAlert(null);
     }, 2000);
   };
+
+  useEffect(() => {
+    const backendURL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+    const intervalId = keepBackendAlive(backendURL);
+
+    // Cleanup function to clear the interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <>

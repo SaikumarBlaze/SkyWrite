@@ -26,12 +26,12 @@ const Noteitem = (props) => {
 
   return (
     <div
-      className="card my-3 text-white"
+      className="card text-white"
       style={{ border: "1px solid rgba(127, 127, 127, 0.5)" }}
     >
       <div className="card-body l-1">
         <div className="d-flex align-items-center justify-content-between mb-3">
-          <h5 className="card-title m-0">{note.title}</h5>
+          <h5 className="card-title m-0 me-3">{note.title}</h5>
           <div className="d-flex">
             <i
               className="fa-regular fa-pen-to-square me-2"
