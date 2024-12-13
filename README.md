@@ -70,3 +70,7 @@ To get a local copy up and running, follow these steps:
 | GET    | `/api/notes/:id` | Retrieve a specific note by ID |
 | PUT    | `/api/notes/:id` | Update a specific note by ID   |
 | DELETE | `/api/notes/:id` | Delete a specific note by ID   |
+
+## Live Application
+
+Explore the live version of the **UserManage** application here: [UserManage by Sai Kumar](https://sky-write-notes-saikumar.vercel.app/) 🚀
