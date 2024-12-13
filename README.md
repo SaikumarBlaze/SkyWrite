@@ -73,4 +73,4 @@ To get a local copy up and running, follow these steps:
 
 ## Live Application
 
-Explore the live version of the **UserManage** application here: [UserManage by Sai Kumar](https://sky-write-notes-saikumar.vercel.app/) 🚀
+Explore the live version of the **SkyWrite** application here: [SkyWrite by Sai Kumar](https://sky-write-notes-saikumar.vercel.app/) 🚀
